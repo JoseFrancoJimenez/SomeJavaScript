@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="./components.js"></script>
+</head>
+<body>
+
+    <h1>Web Components Demo</h1>
+    <div class="container">
+        <div class="container-header">HELLO COMPONENT</div>
+        <hello-component alias="HelloComponent"></hello-component>
+    </div>
+    <div class="container">
+        <div class="container-header">COMPOSITE COMPONENT</div>
+        <composite-component alias="Composite"></composite-component>
+    </div>  
+    <div class="container">
+        <div class="container-header">BUTTON COMPONENT</div>
+        <custom-button onclick="alert('click! click!')" class="custom-button" title="Click this button" label="Click Me" icon="fa fa-home"></custom-button>
+    </div>
+    </body>
+</html>
