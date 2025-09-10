@@ -3,10 +3,10 @@ import WebComponent from "../web-component.js";
 /**
  * @class HelloComponent
  * @extends WebComponent
- * @description A custom web component that shows a greeting and a button.
- * Supports localization and an alias attribute for custom greetings.
+ * @description A custom web component with a greeting and button.
+ * Supports localization and an alias attribute for greetings.
  * Emits an event on button click.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements}
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_components}
  */
 export default class HelloComponent extends WebComponent {
   /**
@@ -34,7 +34,7 @@ export default class HelloComponent extends WebComponent {
    * @method initialize
    * @description Sets alias, updates greeting, and adds button click event.
    * @example
-   * // HTML: <hello-component alias="Alice"></hello-component>
+   * // HTML: <somejs-hello-component alias="Alice"></somejs-hello-component>
    * this.on("button-click", e => console.log(e.detail)); // { alias: "Alice" }
    * console.log(this.alias); // "Alice" or "potato" if unset
    */
@@ -98,8 +98,8 @@ export default class HelloComponent extends WebComponent {
 }
 
 /**
- * @description Registers HelloComponent as <hello-component>.
+ * @description Registers HelloComponent as <somejs-hello-component>.
  * @example
- * // HTML: <hello-component alias="Alice"></hello-component>
+ * // HTML: <somejs-hello-component alias="Alice"></somejs-hello-component>
  */
-WebComponent.register("hello-component", HelloComponent);
+WebComponent.register("somejs-hello-component", HelloComponent);

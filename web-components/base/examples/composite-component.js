@@ -5,10 +5,9 @@ import WebComponent from "../web-component.js";
  * @extends WebComponent
  * @description A composite web component with multiple HelloComponent
  * instances, using an alias attribute for custom greetings.
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements}
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Web_components}
  */
 export default class CompositeComponent extends WebComponent {
-  
   /**
    * @static
    * @property {string[]} observedAttributes
@@ -48,8 +47,10 @@ export default class CompositeComponent extends WebComponent {
 
   /**
    * @method initialize
-   * @description Sets up listeners for "button-click" events from
-   * HelloComponent instances.
+   * @description Sets up listeners for "button-click" from HelloComponent.
+   * @example
+   * // HTML: <somejs-composite-component alias="Alice"></somejs-composite-component>
+   * // Clicking a button alerts, e.g., "Hello Alice...\npotato says hello"
    */
   initialize() { 
     this.elems.potato.addEventListener("button-click", (ev) =>
@@ -62,8 +63,11 @@ export default class CompositeComponent extends WebComponent {
 
   /**
    * @method sayHi
-   * @description Shows alert with localized greeting.
+   * @description Shows alert with localized greeting using alias.
    * @param {CustomEvent} ev - Event with alias in detail.
+   * @example
+   * // With alias="Alice", ev.detail.alias="potato"
+   * this.sayHi({ detail: { alias: "potato" } }); // Alerts "Hello Alice..."
    */
   sayHi(ev) {
     alert(this.nls.get("test_hi", [this.alias, ev.alias]));
@@ -76,7 +80,7 @@ export default class CompositeComponent extends WebComponent {
    * @param {string|null} oldValue - Previous value.
    * @param {string|null} newValue - New value.
    * @example
-   * // HTML: <test-composite-component alias="Alice"></test-composite-component>
+   * // HTML: <somejs-composite-component alias="Alice"></somejs-composite-component>
    * // Sets this.alias to "Alice"
    */
   processAttributeChange(name, oldValue, newValue) {
@@ -87,6 +91,9 @@ export default class CompositeComponent extends WebComponent {
    * @method html
    * @description Defines HTML with localized text and HelloComponent tags.
    * @returns {string} HTML string for component template.
+   * @example
+   * // Returns HTML with HelloComponent instances
+   * const html = this.html();
    */
   html() {
     return `
@@ -107,6 +114,9 @@ export default class CompositeComponent extends WebComponent {
    * @method localize
    * @description Sets up Nls with English and French translations.
    * @param {Nls} nls - Localization instance to configure.
+   * @example
+   * this.localize(this.nls);
+   * console.log(this.nls.get("test_1", [], "en")); // "Hello, I am..."
    */
   localize(nls) {
     nls.add("test_1", "en", "Hello, I am the composite component, I have 3 hello components inside me");        
@@ -123,8 +133,8 @@ export default class CompositeComponent extends WebComponent {
 }
 
 /**
- * @description Registers CompositeComponent as <composite-component>.
+ * @description Registers CompositeComponent as <somejs-composite-component>.
  * @example
- * // HTML: <composite-component alias="Alice"></composite-component>
+ * // HTML: <somejs-composite-component alias="Alice"></somejs-composite-component>
  */
-WebComponent.register("composite-component", CompositeComponent);
+WebComponent.register("somejs-composite-component", CompositeComponent);
